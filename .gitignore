@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Packaging output
+packaging/*.ico
+dist/installer/
+*.spec.bak
+
+# Application runtime data (never commit user data or models)
+data/
+models/
+engine_packs/
+recordings/
+exports/
+*.db
+*.db-wal
+*.db-shm
+settings.json
+logs/
+portable.flag
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini

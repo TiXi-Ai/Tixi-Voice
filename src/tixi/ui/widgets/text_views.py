@@ -43,9 +43,10 @@ from ...engines.text_normalization.persian import DIACRITIC_CHARS
 from ..theme.tokens import ThemeTokens
 from .buttons import IconButton
 
-# Classic Persian harakat — the extended marks live in
-# ``tixi.engines.text_normalization.persian.DIACRITIC_CHARS``.
-HARAKAT = "\u064b\u064c\u064d\u064e\u064f\u0650\u0651\u0652\u0653\u0654\u0655\u0670"
+#: The pipeline's own diacritic set, so the editor and the engines always agree
+#: about what counts as a harakat (short vowels, sukun, shadda, and the extended
+#: marks used by religious texts).
+HARAKAT = DIACRITIC_CHARS
 ARABIC_RANGE = re.compile(r"[\u0600-\u06ff\u0750-\u077f\ufb50-\ufdff\ufe70-\ufeff]+")
 LATIN_RANGE = re.compile(r"[A-Za-z][A-Za-z'’\-]*")
 ZWNJ = "\u200c"

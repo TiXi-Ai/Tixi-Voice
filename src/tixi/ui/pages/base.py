@@ -101,7 +101,8 @@ class Page(QWidget):
                 hook(tokens)
             except Exception:  # noqa: BLE001 - a paint helper must not break the page
                 pass
-        self.banner.apply_tokens(tokens) if self.banner.isVisible() else None
+        if self.banner.isVisible():
+            self.banner.apply_tokens(tokens)
 
     @property
     def tokens(self) -> ThemeTokens | None:

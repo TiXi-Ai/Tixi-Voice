@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Callable
 
 from PySide6.QtCore import QSize, Qt, QTimer, Signal
 from PySide6.QtGui import QAction, QCloseEvent, QKeySequence, QShortcut
@@ -75,6 +75,8 @@ class MainWindow(QMainWindow):
         self.theme_manager = theme_manager
         self.pages: dict[str, Page] = {}
         self._first_show = True
+        #: Connected once, the first time a busy operation needs a Cancel button.
+        self._cancel_hook: Callable[[], None] | None = None
 
         self.setWindowTitle(f"{APP_NAME} {APP_VERSION}")
         self.setMinimumSize(QSize(1120, 720))
@@ -224,9 +226,11 @@ class MainWindow(QMainWindow):
             self._dictation_button.setEnabled(False)
             self._dictation_button.setToolTip("Voice typing needs Windows.")
 
-        updates = getattr(self.context, "updates", None)
-        if updates is not None:
-            self.context.settings_store.subscribe(self._on_settings_changed)
+        # React to settings changes whatever the state of the updater.
+        store = getattr(self.context, "settings_store", None)
+        subscribe = getattr(store, "subscribe", None)
+        if callable(subscribe):
+            subscribe(self._on_settings_changed)
 
     def _install_shortcuts(self) -> None:
         for index, (page_id, _page) in enumerate(PAGE_TYPES[:9], start=1):
@@ -258,9 +262,9 @@ class MainWindow(QMainWindow):
         except Exception as exc:  # noqa: BLE001 - one broken page must not kill the window
             log.exception("page refresh failed", extra={"event": "page_refresh_failed", "page": page_id})
             self.notify("This page could not be loaded", str(exc), severity="error")
-        self.context.settings_store.set("general.last_view", page_id) if hasattr(
-            self.context, "settings_store"
-        ) else None
+        store = getattr(self.context, "settings_store", None)
+        if store is not None:
+            store.set("general.last_view", page_id)
 
     def page(self, page_id: str) -> Page | None:
         return self.pages.get(page_id)
@@ -306,7 +310,7 @@ class MainWindow(QMainWindow):
         if self._first_show:
             self._first_show = False
             self._apply_window_effects()
-            self.goto(self.stack.currentWidget().title.lower().replace(" ", "_") if False else self._current_page_id())
+            self.goto(self._current_page_id())
 
     def _current_page_id(self) -> str:
         current = self.stack.currentWidget()
@@ -356,11 +360,9 @@ class MainWindow(QMainWindow):
     def set_busy(self, message: str, *, cancellable: bool = True) -> None:
         self.busy_overlay.start(message, cancellable=cancellable)
         self._status_label.setText(message)
-        self._cancel_hook = lambda: self.context.jobs.cancel_all()
-        try:
+        if self._cancel_hook is None:
+            self._cancel_hook = self.context.jobs.cancel_all
             self.busy_overlay.cancelled.connect(self._cancel_hook)
-        except Exception:  # noqa: BLE001 - connecting twice is harmless
-            pass
 
     def clear_busy(self) -> None:
         self.busy_overlay.stop()

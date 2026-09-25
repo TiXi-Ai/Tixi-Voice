@@ -371,7 +371,7 @@ class DetailDialog(QDialog):
         editor.setPlainText(body)
         if tokens is not None:
             editor.setStyleSheet(
-                f"font-family: {tokens.text and 'Consolas, monospace'}; font-size: 12px;"
+                "font-family: Consolas, 'Cascadia Mono', 'Courier New', monospace; font-size: 12px;"
             )
         layout.addWidget(editor, 1)
         buttons = QHBoxLayout()

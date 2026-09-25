@@ -343,7 +343,7 @@ class VoiceTypingPage(Page):
         for result in reversed(results[-40:]):
             header = "Inserted" if result.inserted else ("Copied" if result.text else "Failed")
             text = (result.text or result.raw_text or result.error or "").strip()
-            item = QListWidgetItem(f"{header} · {human_time_ago(None) if False else ''}{text[:120]}")
+            item = QListWidgetItem(f"{header} · {text[:120]}")
             item.setData(Qt.ItemDataRole.UserRole, result)
             if result.warnings:
                 item.setToolTip("\n".join(result.warnings))

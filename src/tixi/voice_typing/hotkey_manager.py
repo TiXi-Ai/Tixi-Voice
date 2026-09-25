@@ -22,6 +22,7 @@ Design notes
 
 from __future__ import annotations
 
+import contextlib
 import ctypes
 import queue
 import threading
@@ -263,14 +264,6 @@ class GlobalHotkeyManager:
                 f"{target} has no modifier key. A bare key would interfere with normal typing — "
                 "add Ctrl, Alt, Shift or Win.",
             )
-        module = "MOD_" + "_".join(
-            sorted(
-                {
-                    "CONTROL" if modifier.lower() == "ctrl" else modifier.upper()
-                    for modifier in modifiers
-                }
-            )
-        )
         mod_value = 0
         for modifier in modifiers:
             mod_value |= {
@@ -352,7 +345,7 @@ class GlobalHotkeyManager:
         finally:
             self._enabled = False
             if self._hook:
-                with contextlib_suppress():
+                with contextlib.suppress(Exception):
                     ctypes.windll.user32.UnhookWindowsHookEx(self._hook)
                 self._hook = None
 
@@ -397,7 +390,7 @@ class GlobalHotkeyManager:
         try:
             self._events.put_nowait(event)
         except queue.Full:  # pragma: no cover - the dispatcher is keeping up
-            with contextlib_suppress():
+            with contextlib.suppress(Exception):
                 self._events.get_nowait()
 
     def _dispatch_thread(self) -> None:
@@ -419,12 +412,6 @@ class GlobalHotkeyManager:
 
     def key_names(self) -> Iterable[str]:
         return sorted({name for name in VK_NAMES.values()})
-
-
-def contextlib_suppress():
-    import contextlib
-
-    return contextlib.suppress(Exception)
 
 
 def describe_shortcut(shortcut: str) -> str:

@@ -283,8 +283,6 @@ class RecordingOverlay(QWidget):
         self._fade.start()
 
     def _hide_now(self) -> None:
-        with_suppress = lambda: None  # noqa: E731 - tiny local helper
-        with_suppress()
         try:
             self._fade.finished.disconnect(self._hide_now)
         except (RuntimeError, TypeError):

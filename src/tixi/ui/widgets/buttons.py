@@ -7,7 +7,7 @@ from typing import Callable
 from PySide6.QtCore import QSize, QTimer, Qt, Signal
 from PySide6.QtWidgets import QButtonGroup, QHBoxLayout, QPushButton, QSizePolicy, QWidget
 
-from ..theme.icons import accent_icon, get_icon, icon_pixmap
+from ..theme.icons import get_icon, icon_pixmap
 from ..theme.tokens import ThemeTokens
 
 

@@ -96,10 +96,11 @@ def apply_commands(text: str, language: str = "fa") -> str:
     if not text:
         return text
     result = text
-    lowered = result.lower()
     for phrase, replacement in sorted(DICTATION_COMMANDS.items(), key=lambda item: -len(item[0])):
         pattern = re.compile(rf"(?:^|\s){re.escape(phrase)}(?=\s|$)", re.IGNORECASE)
-        if pattern.search(lowered if phrase.isascii() else result):
+        # ASCII commands are matched case-insensitively; Persian ones exactly.
+        haystack = result.lower() if phrase.isascii() else result
+        if pattern.search(haystack):
             # Command replacement: keep one separating space before "." style marks.
             result = pattern.sub(_replacement_for(replacement), result)
     return clean_whitespace(result) if "\n" in result else result
@@ -108,7 +109,7 @@ def apply_commands(text: str, language: str = "fa") -> str:
 def _replacement_for(replacement: str) -> str:
     if replacement.startswith("\n"):
         return replacement
-    return "\\g<0>" if False else f" {replacement}"
+    return f" {replacement}"
 
 
 def auto_punctuate(text: str, *, language: str = "fa", persian_punctuation: bool = True) -> str:

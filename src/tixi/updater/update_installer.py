@@ -170,13 +170,20 @@ class UpdateService:
             )
         except GitHubError as exc:
             message = str(exc)
-            offline = "no such release" not in message.lower()
+            # "No published release yet" is a normal state for a young repository,
+            # not a failed check; anything else is reported as a real error.
+            if "no published release" in message.lower() or "no such release" in message.lower():
+                return UpdateCheckResult(
+                    ok=True,
+                    current_version=self.current_version,
+                    checked_at=checked_at,
+                    error=message,
+                )
             return UpdateCheckResult(
                 ok=False,
                 error=message,
                 current_version=self.current_version,
                 checked_at=checked_at,
-                offline=offline and "no published release" in message.lower() is False and False,
             )
 
         if not releases:

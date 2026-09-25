@@ -1,0 +1,17 @@
+# Reference list for the engine packs Tixi Voice installs into
+# %LOCALAPPDATA%\TixiVoice\engine_packs. The application downloads the wheels
+# itself (verified against the PyPI digests) — this file documents the pins and
+# is what the maintenance scripts use to refresh the catalogue.
+#
+# Pack "piper" — Text to speech (GPL-3.0-or-later, installed separately)
+piper-tts==1.8.0
+# Pack "diacritization" — neural Persian diacritization + ONNX runtime
+onnxruntime>=1.17,<2.0
+tokenizers>=0.15,<1.0
+# Pack "faster-whisper" — Speech recognition (MIT)
+faster-whisper>=1.0,<2.0
+ctranslate2>=4.0,<5.0
+av>=12.0,<15.0
+# Pack "quality" — extra export encoders (already bundled, kept for completeness)
+soundfile>=0.12.1,<0.15
+lameenc>=1.7,<2.0

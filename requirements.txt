@@ -1,0 +1,9 @@
+# Tixi Voice — core runtime (what the installer ships).
+# Engine packs (Piper TTS, faster-whisper, ONNX diacritization) are downloaded
+# at runtime from PyPI after an explicit user action; see requirements-engines.txt.
+PySide6-Essentials>=6.6,<7.0
+numpy>=1.26,<3.0
+sounddevice>=0.4.6,<0.6
+soundfile>=0.12.1,<0.15
+requests>=2.31,<3.0
+lameenc>=1.7,<2.0

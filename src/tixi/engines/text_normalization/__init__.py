@@ -1,0 +1,72 @@
+"""Text normalisation engines (Persian-first, English-aware)."""
+
+from .numbers import (
+    NumberRules,
+    convert_digits,
+    decimal_to_words_fa,
+    is_persian_text,
+    number_to_words_fa,
+    ordinal_fa,
+    to_ascii_digits,
+    verbalise_text,
+    year_to_words_fa,
+)
+from .persian import (
+    DIACRITIC_CHARS,
+    ZWNJ,
+    NormalizationOptions,
+    NormalizationReport,
+    PersianTextNormalizer,
+    collapse_whitespace,
+    fold_arabic_characters,
+    has_diacritics,
+    normalise_zwnj,
+    strip_diacritics,
+    strip_rtl_markers,
+    text_statistics,
+)
+from .pipeline import PipelineOptions, PipelineResult, TextPipeline
+from .pronunciation import PronunciationDictionary, default_pronunciation_dictionary
+from .sentences import (
+    SegmentationOptions,
+    Sentence,
+    TextChunk,
+    build_chunks,
+    estimate_duration_ms,
+    segment_sentences,
+)
+
+__all__ = [
+    "DIACRITIC_CHARS",
+    "ZWNJ",
+    "NormalizationOptions",
+    "NormalizationReport",
+    "NumberRules",
+    "PersianTextNormalizer",
+    "PipelineOptions",
+    "PipelineResult",
+    "PronunciationDictionary",
+    "SegmentationOptions",
+    "Sentence",
+    "TextChunk",
+    "TextPipeline",
+    "build_chunks",
+    "collapse_whitespace",
+    "convert_digits",
+    "decimal_to_words_fa",
+    "default_pronunciation_dictionary",
+    "estimate_duration_ms",
+    "fold_arabic_characters",
+    "has_diacritics",
+    "is_persian_text",
+    "normalise_zwnj",
+    "number_to_words_fa",
+    "ordinal_fa",
+    "segment_sentences",
+    "strip_diacritics",
+    "strip_rtl_markers",
+    "text_statistics",
+    "to_ascii_digits",
+    "verbalise_text",
+    "year_to_words_fa",
+]

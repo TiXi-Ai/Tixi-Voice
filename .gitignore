@@ -1,0 +1,35 @@
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+
+# --- Virtual environment --------------------------------------------------
+.venv/
+venv/
+source/.venv/
+
+# --- PyInstaller build output --------------------------------------------
+source/build/
+source/dist/
+
+# --- Engine binaries restored by source/fetch_engine.py ------------------
+source/engines/
+
+# --- Local release / deployed app (built artifacts, not source) ----------
+/Tixi-Voice.exe
+/_internal/
+*.exe
+*.dll
+
+# --- Runtime / test leftovers --------------------------------------------
+*.log
+*.tmp
+*.bak
+~*
+
+# --- Editors and OS junk --------------------------------------------------
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,156 @@
+{
+  "tts-fa": {
+    "title": "فارسی · امیر",
+    "kind": "tts",
+    "description": "صدای فارسی، کیفیت متوسط؛ مدل Piper",
+    "files": [
+      {
+        "name": "fa_IR-amir-medium.onnx",
+        "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fa/fa_IR/amir/medium/fa_IR-amir-medium.onnx",
+        "sha256": "fb815380d969ea372b0b21b0de14421f58fe481047e153e69685d079b6e1a9d1",
+        "size": 63531379
+      },
+      {
+        "name": "fa_IR-amir-medium.onnx.json",
+        "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/fa/fa_IR/amir/medium/fa_IR-amir-medium.onnx.json",
+        "sha256": "75f918a3bf0f57a9179abe725af529f2a5c79d6c899e2a84aec76c685d5dfb9a",
+        "size": 4958
+      }
+    ],
+    "revision": "c10ece1aade47bb51c153c893d14e5bf8e5b7117"
+  },
+  "tts-en": {
+    "title": "English · LJ Speech",
+    "kind": "tts",
+    "description": "صدای انگلیسی آمریکایی؛ مدل Piper",
+    "files": [
+      {
+        "name": "en_US-ljspeech-medium.onnx",
+        "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/en/en_US/ljspeech/medium/en_US-ljspeech-medium.onnx",
+        "sha256": "6f52a751e2349abe7a76735eb09dc1875298c77ea2342ffd2fef79ff81b87f22",
+        "size": 63531379
+      },
+      {
+        "name": "en_US-ljspeech-medium.onnx.json",
+        "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/en/en_US/ljspeech/medium/en_US-ljspeech-medium.onnx.json",
+        "sha256": "141d612cc0a95ed7efc1ca936b845c2364967f2e9217c5dbfcf69fc4d6c65860",
+        "size": 4972
+      }
+    ],
+    "revision": "c10ece1aade47bb51c153c893d14e5bf8e5b7117"
+  },
+  "tts-en-lessac": {
+    "title": "English · Lessac (خانم)",
+    "kind": "tts",
+    "description": "صدای زن انگلیسی آمریکایی، طبیعی و رایج؛ مدل Piper",
+    "files": [
+      {
+        "name": "en_US-lessac-medium.onnx",
+        "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/en/en_US/lessac/medium/en_US-lessac-medium.onnx",
+        "sha256": "5efe09e69902187827af646e1a6e9d269dee769f9877d17b16b1b46eeaaf019f",
+        "size": 63201294
+      },
+      {
+        "name": "en_US-lessac-medium.onnx.json",
+        "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json",
+        "sha256": "efe19c417bed055f2d69908248c6ba650fa135bc868b0e6abb3da181dab690a0",
+        "size": 4885
+      }
+    ],
+    "revision": "c10ece1aade47bb51c153c893d14e5bf8e5b7117"
+  },
+  "tts-en-amy": {
+    "title": "English · Amy (خانم)",
+    "kind": "tts",
+    "description": "صدای زن انگلیسی آمریکایی؛ مدل Piper",
+    "files": [
+      {
+        "name": "en_US-amy-medium.onnx",
+        "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/en/en_US/amy/medium/en_US-amy-medium.onnx",
+        "sha256": "b3a6e47b57b8c7fbe6a0ce2518161a50f59a9cdd8a50835c02cb02bdd6206c18",
+        "size": 63201294
+      },
+      {
+        "name": "en_US-amy-medium.onnx.json",
+        "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/en/en_US/amy/medium/en_US-amy-medium.onnx.json",
+        "sha256": "95a23eb4d42909d38df73bb9ac7f45f597dbfcde2d1bf9526fdeaf5466977d77",
+        "size": 4882
+      }
+    ],
+    "revision": "c10ece1aade47bb51c153c893d14e5bf8e5b7117"
+  },
+  "stt-small": {
+    "title": "Whisper Small · پیشنهادی",
+    "kind": "stt",
+    "description": "دقت بیشتر برای فارسی و انگلیسی؛ کندتر از Base",
+    "files": [
+      {
+        "name": "ggml-small-q5_1.bin",
+        "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-small-q5_1.bin",
+        "sha256": "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb",
+        "size": 190085487
+      }
+    ],
+    "revision": "5359861c739e955e79d9a303bcbc70fb988958b1"
+  },
+  "stt-base": {
+    "title": "Whisper Base · سبک‌تر",
+    "kind": "stt",
+    "description": "سریع‌تر و کم‌حجم‌تر؛ احتمال خطای بیشتر در فارسی",
+    "files": [
+      {
+        "name": "ggml-base-q5_1.bin",
+        "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-base-q5_1.bin",
+        "sha256": "422f1ae452ade6f30a004d7e5c6a43195e4433bc370bf23fac9cc591f01a8898",
+        "size": 59707625
+      }
+    ],
+    "revision": "5359861c739e955e79d9a303bcbc70fb988958b1"
+  },
+  "stt-medium": {
+    "title": "Whisper Medium · دقت بالاتر",
+    "kind": "stt",
+    "description": "گزینهٔ سنگین‌تر برای گفتار فارسی؛ کندتر، حافظهٔ بیشتر، نتیجه همچنان نیازمند بازبینی",
+    "revision": "5359861c739e955e79d9a303bcbc70fb988958b1",
+    "files": [
+      {
+        "name": "ggml-medium-q5_0.bin",
+        "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-medium-q5_0.bin",
+        "sha256": "19fea4b380c3a618ec4723c3eef2eb785ffba0d0538cf43f8f235e7b3b34220f",
+        "size": 539212467
+      }
+    ]
+  },
+  "clone-openvoice": {
+    "title": "صدای من · OpenVoice V2",
+    "kind": "clone",
+    "description": "شبیه‌سازی رنگ صدای شخصی؛ مدل ONNX جامعهٔ متن‌باز، پردازش محلی",
+    "revision": "bfc3335585a356228f19df7b1ebf36906b731207",
+    "files": [
+      {
+        "name": "tone_color.onnx",
+        "url": "https://huggingface.co/Hinotsuba/OpenVoice-ONNX-v2/resolve/bfc3335585a356228f19df7b1ebf36906b731207/tone_color.onnx",
+        "sha256": "896195b84b0cb87a828bb8cab06577e9c024356bc9727b1a8f4174154bc0affa",
+        "size": 157196170
+      },
+      {
+        "name": "tone_extract.onnx",
+        "url": "https://huggingface.co/Hinotsuba/OpenVoice-ONNX-v2/resolve/bfc3335585a356228f19df7b1ebf36906b731207/tone_extract.onnx",
+        "sha256": "e91c2cb696e199d2519ed8b62ca6e3c8e42cb99ca13955dd6e188051486e681c",
+        "size": 3364792
+      },
+      {
+        "name": "tone_config.json",
+        "url": "https://huggingface.co/Hinotsuba/OpenVoice-ONNX-v2/resolve/bfc3335585a356228f19df7b1ebf36906b731207/tone_config.json",
+        "sha256": "9dfff60350b8c63f2c664efd92a61b2516efb22671466960f0e5dfebd881fa47",
+        "size": 838
+      },
+      {
+        "name": "onnxruntime_directml-1.24.4-cp313-cp313-win_amd64.whl",
+        "url": "https://files.pythonhosted.org/packages/60/53/2bd2696fac19cf8ca55496a0bcfe431f3aff9579eabbb0e231dc238acf6f/onnxruntime_directml-1.24.4-cp313-cp313-win_amd64.whl",
+        "sha256": "2f1031cb2281e5b27cca9efe0b9399317c7286e4d226f7a79d4ab79bbd94d19e",
+        "size": 25112253
+      }
+    ]
+  }
+}

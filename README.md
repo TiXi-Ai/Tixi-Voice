@@ -14,6 +14,12 @@
 
 رابط مستقل ویندوز با همان هویت Tixi: فارسی و راست‌چین، لوگوی ارسالی، ظاهر نئونی، شب/روز/سیستم. برنامه از Tixi Prompt جداست و پوشهٔ دادهٔ جداگانه دارد.
 
+## تصاویر برنامه
+
+| متن به صدا | صدا به متن | صدای من |
+|---|---|---|
+| ![متن به صدا](source/assets/screenshots/tts.png) | ![صدا به متن](source/assets/screenshots/stt.png) | ![صدای من](source/assets/screenshots/personal-voice.png) |
+
 ## اجرای نسخهٔ EXE
 
 1. کل فایل ZIP را با **Extract All** استخراج کن.

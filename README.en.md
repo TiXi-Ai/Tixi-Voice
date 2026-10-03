@@ -17,6 +17,14 @@ A fully **offline**, **portable** speech studio for Windows x64 that runs **enti
 
 ---
 
+## Screenshots
+
+| Text to Speech | Speech to Text | My Voice |
+|---|---|---|
+| ![Text to Speech](source/assets/screenshots/tts.png) | ![Speech to Speech](source/assets/screenshots/stt.png) | ![My Voice](source/assets/screenshots/personal-voice.png) |
+
+---
+
 ## Run (Portable EXE)
 
 1. **Extract All** the ZIP.

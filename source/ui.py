@@ -25,7 +25,7 @@ from engines import synthesize, transcribe
 from personal_ui import PersonalVoiceMixin
 from personal_voice import KEY as PERSONAL_KEY, personalized_speech
 from effects import EFFECTS
-from dictation import DictationController, HOTKEY_LABEL
+from dictation import DictationController, HOTKEY_LABEL, paste_text
 from dictation_overlay import DictationOverlay
 
 LOG=logging.getLogger('tixi.voice')
@@ -149,6 +149,7 @@ class MainWindow(PersonalVoiceMixin,QMainWindow):
         self.dictation_overlay=DictationOverlay()
         self.dictation.recording.connect(self._dictation_overlay)
         self.dictation.working.connect(self._dictation_working_overlay)
+        self.dictation.type_text.connect(paste_text)
         self.build_tts();self.build_stt();self.build_history();self.build_models();self.build_personal_voice_page();self.build_appearance()
         self.set_theme(store.setting('theme','midnight'));self.navigate(0);self.refresh_models();self.refresh_history()
         self.tts_text.setPlainText(store.setting('tts_draft',''))

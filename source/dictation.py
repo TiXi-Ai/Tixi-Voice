@@ -80,6 +80,14 @@ def hotkey_down() -> bool:
     return bool(user32.GetAsyncKeyState(VK_SPACE) & 0x8000)
 
 
+def release_modifiers() -> None:
+    """Physically release any still-held Ctrl/Shift so injected typing is not
+    turned into shortcuts (e.g. Ctrl+V, Ctrl+C) by the focused application."""
+    for vk in (0x11, 0x10, 0xA0, 0xA1, 0xA2, 0xA3):  # Ctrl, Shift, L/R variants
+        if user32.GetAsyncKeyState(vk) & 0x8000:
+            user32.keybd_event(vk, 0, KEYEVENTF_KEYUP, 0)
+
+
 def send_text(text: str) -> bool:
     """Type *text* into the focused window (Unicode, layout independent).
 
@@ -110,15 +118,25 @@ def send_text(text: str) -> bool:
 
 
 def paste_text(text: str) -> None:
-    """Fallback insertion: clipboard + Ctrl+V (used only if SendInput is blocked)."""
+    """Fallback insertion: clipboard + Ctrl+V (used only if SendInput is blocked).
+
+    Must be called on the main GUI thread (Qt clipboard access)."""
     try:
         from PySide6.QtWidgets import QApplication
         QApplication.clipboard().setText(text)
+        QApplication.processEvents()
     except Exception:
         return
-    for vk in (0x11, 0x56):
+    # Release any still-held modifier keys (Ctrl/Shift) that can interfere,
+    # then press Ctrl+V via SendInput rather than the older keybd_event.
+    for vk in (0x11, 0x10, 0xA0, 0xA2):  # Ctrl, Shift, Shift, Ctrl
+        try:
+            user32.keybd_event(vk, 0, KEYEVENTF_KEYUP, 0)
+        except Exception:
+            pass
+    for vk in (0x11, 0x56):  # Ctrl down, V down
         user32.keybd_event(vk, 0, 0, 0)
-    for vk in (0x56, 0x11):
+    for vk in (0x56, 0x11):  # V up, Ctrl up
         user32.keybd_event(vk, 0, KEYEVENTF_KEYUP, 0)
 
 
@@ -147,6 +165,7 @@ class DictationController(QObject):
     recording = Signal(bool) # hold-to-talk started / stopped
     working = Signal(bool)   # transcription in progress
     failed = Signal(str)     # non fatal problem; shown as status text only
+    type_text = Signal(str)  # emit (from the worker) to insert text on the main thread
 
     def __init__(self, store, providers=None, parent=None):
         super().__init__(parent)
@@ -318,8 +337,12 @@ class DictationController(QObject):
             return
         # Give the user time to release the modifiers before the text is injected.
         time.sleep(0.12)
+        release_modifiers()
+        time.sleep(0.05)
         if not send_text(text):
-            paste_text(text)
+            # Run clipboard+Ctrl+V on the main GUI thread (Qt clipboard is not
+            # thread-safe and the focused window may block raw SendInput).
+            self.type_text.emit(text)
         preview = text.replace('\n', ' ')
         if len(preview) > 46:
             preview = preview[:46] + '…'

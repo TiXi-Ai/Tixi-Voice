@@ -8,6 +8,8 @@
 
 > **English:** Tixi Voice is a fully **offline**, **portable** Persian/English speech studio for Windows x64. It does **Text-to-Speech** (Piper TTS + OpenVoice personal voice cloning) and **Speech-to-Text** (Whisper) with **no installation, no Python, no API, no cloud** — everything runs locally on your machine. Just unzip, run the EXE, and download models from the built-in UI. See the Persian README below for full details.
 
+> 🌐 English documentation: [README.en.md](README.en.md)
+
 ---
 
 رابط مستقل ویندوز با همان هویت Tixi: فارسی و راست‌چین، لوگوی ارسالی، ظاهر نئونی، شب/روز/سیستم. برنامه از Tixi Prompt جداست و پوشهٔ دادهٔ جداگانه دارد.
